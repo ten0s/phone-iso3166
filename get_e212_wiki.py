@@ -23,12 +23,12 @@ for row in soup.find_all('table', {'class': 'wikitable'}):
             operator_name = info[3].text
             country_code = network_country(mcc, mnc)
             if info[4].text != 'Not operational':
-                operator = ""
-                if operator_brand != '' and operator_name != '':
+                operator = ''
+                if   operator_brand != '' and operator_name != '':
                     operator = operator_brand + " | " + operator_name
                 elif operator_brand == '' and operator_name != '':
                     operator = operator_name
-                elif operator_name != '' and operator_name == '':
+                elif operator_brand != '' and operator_name == '':
                     operator = operator_brand
                 networkdict[mcc][mnc] = (country_code, operator)
         except (ValueError, InvalidNetwork):
